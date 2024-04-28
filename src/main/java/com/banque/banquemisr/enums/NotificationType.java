@@ -1,4 +1,4 @@
-package banque.banquemisr.enums;
+package com.banque.banquemisr.enums;
 
 public enum NotificationType {
     UPCOMING_DEADLINE,

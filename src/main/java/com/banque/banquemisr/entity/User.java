@@ -1,6 +1,7 @@
 package com.banque.banquemisr.entity;
 
 import com.banque.banquemisr.enums.UserRole;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
@@ -21,6 +22,7 @@ public class User implements UserDetails {
     @Column(unique = true, length = 100, nullable = false)
     private String username;
     @Column(nullable = false)
+    @JsonIgnore
     private String password;
     @Column
     @Enumerated(EnumType.STRING)

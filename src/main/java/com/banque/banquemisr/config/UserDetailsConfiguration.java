@@ -17,11 +17,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Configuration
 @RequiredArgsConstructor
-public class ApplicationConfiguration {
+public class UserDetailsConfiguration {
     private final UserRepository userRepository;
 
     @Bean

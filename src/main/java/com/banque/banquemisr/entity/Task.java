@@ -4,6 +4,8 @@ import com.banque.banquemisr.enums.TaskPriority;
 import com.banque.banquemisr.enums.TaskStatus;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,6 +16,7 @@ import java.time.LocalDateTime;
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     private Long id;
     private String title;
     private String description;
@@ -22,7 +25,11 @@ public class Task {
     @Enumerated(EnumType.STRING)
     private TaskPriority priority;
     private LocalDate dueDate;
+    @CreationTimestamp
+    @Column(updatable = false, name = "created_at")
     private LocalDateTime createdAt;
+    @UpdateTimestamp
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 }
 

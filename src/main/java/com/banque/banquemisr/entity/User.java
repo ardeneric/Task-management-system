@@ -11,14 +11,18 @@ import java.util.List;
 
 @Entity
 @Data
-@Table
+@Table(name = "users")
 public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private Long id;
+    @Column(unique = true, length = 100, nullable = false)
     private String username;
+    @Column(nullable = false)
     private String password;
+    @Column
     @Enumerated(EnumType.STRING)
     private UserRole role;
 

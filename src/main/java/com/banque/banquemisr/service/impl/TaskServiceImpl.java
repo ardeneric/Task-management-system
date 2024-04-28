@@ -1,8 +1,8 @@
-package banque.banquemisr.service.impl;
+package com.banque.banquemisr.service.impl;
 
-import banque.banquemisr.entity.Task;
-import banque.banquemisr.repository.TaskRepository;
-import banque.banquemisr.service.TaskService;
+import com.banque.banquemisr.entity.Task;
+import com.banque.banquemisr.repository.TaskRepository;
+import com.banque.banquemisr.service.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

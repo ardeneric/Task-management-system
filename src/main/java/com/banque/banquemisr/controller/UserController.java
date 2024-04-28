@@ -1,7 +1,7 @@
-package banque.banquemisr.controller;
+package com.banque.banquemisr.controller;
 
-import banque.banquemisr.entity.User;
-import banque.banquemisr.service.UserService;
+import com.banque.banquemisr.entity.User;
+import com.banque.banquemisr.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

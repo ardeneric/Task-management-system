@@ -1,8 +1,8 @@
-package banque.banquemisr.service.impl;
+package com.banque.banquemisr.service.impl;
 
-import banque.banquemisr.entity.User;
-import banque.banquemisr.repository.UserRepository;
-import banque.banquemisr.service.UserService;
+import com.banque.banquemisr.entity.User;
+import com.banque.banquemisr.repository.UserRepository;
+import com.banque.banquemisr.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +13,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserByUsername(String username) {
-        return userRepository.findByUsername(username);
+        return userRepository.findByUsername(username).orElse(null);
     }
 }

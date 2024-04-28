@@ -1,13 +1,13 @@
-package banque.banquemisr.service.impl;
+package com.banque.banquemisr.service.impl;
 
-import banque.banquemisr.entity.Notification;
-import banque.banquemisr.entity.Task;
-import banque.banquemisr.entity.User;
-import banque.banquemisr.enums.NotificationType;
-import banque.banquemisr.repository.NotificationRepository;
-import banque.banquemisr.repository.TaskRepository;
-import banque.banquemisr.repository.UserRepository;
-import banque.banquemisr.service.NotificationService;
+import com.banque.banquemisr.entity.Notification;
+import com.banque.banquemisr.entity.Task;
+import com.banque.banquemisr.entity.User;
+import com.banque.banquemisr.enums.NotificationType;
+import com.banque.banquemisr.repository.NotificationRepository;
+import com.banque.banquemisr.repository.TaskRepository;
+import com.banque.banquemisr.repository.UserRepository;
+import com.banque.banquemisr.service.NotificationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

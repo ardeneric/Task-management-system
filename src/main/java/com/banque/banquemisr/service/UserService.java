@@ -1,6 +1,7 @@
-package banque.banquemisr.service;
+package com.banque.banquemisr.service;
 
-import banque.banquemisr.entity.User;
+
+import com.banque.banquemisr.entity.User;
 
 public interface UserService {
 

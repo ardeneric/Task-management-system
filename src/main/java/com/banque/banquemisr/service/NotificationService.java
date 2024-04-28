@@ -1,7 +1,7 @@
-package banque.banquemisr.service;
+package com.banque.banquemisr.service;
 
-import banque.banquemisr.entity.Notification;
-import banque.banquemisr.enums.NotificationType;
+import com.banque.banquemisr.entity.Notification;
+import com.banque.banquemisr.enums.NotificationType;
 
 import java.util.List;
 

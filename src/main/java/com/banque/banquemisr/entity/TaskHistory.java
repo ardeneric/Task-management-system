@@ -1,4 +1,4 @@
-package banque.banquemisr.entity;
+package com.banque.banquemisr.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -7,6 +7,7 @@ import java.util.Date;
 
 @Entity
 @Data
+@Table
 public class TaskHistory {
 
     @Id

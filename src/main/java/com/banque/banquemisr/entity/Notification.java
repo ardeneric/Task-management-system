@@ -1,6 +1,6 @@
-package banque.banquemisr.entity;
+package com.banque.banquemisr.entity;
 
-import banque.banquemisr.enums.NotificationType;
+import com.banque.banquemisr.enums.NotificationType;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -8,6 +8,7 @@ import java.util.Date;
 
 @Entity
 @Data
+@Table
 public class Notification {
 
     @Id

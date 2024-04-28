@@ -1,6 +1,7 @@
-package banque.banquemisr.service;
+package com.banque.banquemisr.service;
 
-import banque.banquemisr.entity.Task;
+
+import com.banque.banquemisr.entity.Task;
 
 import java.util.List;
 

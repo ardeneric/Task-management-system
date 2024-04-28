@@ -1,7 +1,7 @@
-package banque.banquemisr.entity;
+package com.banque.banquemisr.entity;
 
-import banque.banquemisr.enums.TaskPriority;
-import banque.banquemisr.enums.TaskStatus;
+import com.banque.banquemisr.enums.TaskPriority;
+import com.banque.banquemisr.enums.TaskStatus;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
+@Table
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

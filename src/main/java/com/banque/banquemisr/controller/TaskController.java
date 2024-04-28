@@ -1,11 +1,11 @@
-package banque.banquemisr.controller;
+package com.banque.banquemisr.controller;
 
-import banque.banquemisr.entity.Task;
-import banque.banquemisr.service.TaskService;
+
+import com.banque.banquemisr.entity.Task;
+import com.banque.banquemisr.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

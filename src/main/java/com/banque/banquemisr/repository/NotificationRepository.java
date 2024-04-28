@@ -1,6 +1,7 @@
-package banque.banquemisr.repository;
+package com.banque.banquemisr.repository;
 
-import banque.banquemisr.entity.Notification;
+
+import com.banque.banquemisr.entity.Notification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

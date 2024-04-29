@@ -44,6 +44,7 @@ public class TaskController {
                 .title(taskDto.getTitle())
                 .description(taskDto.getDescription())
                 .priority(taskDto.getPriority())
+                .status(taskDto.getStatus())
                 .dueDate(taskDto.getDueDate())
                 .build();
         Task createdTask = taskService.createTask(task);

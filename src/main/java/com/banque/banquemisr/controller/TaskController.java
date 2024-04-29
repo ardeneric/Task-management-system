@@ -32,12 +32,13 @@ public class TaskController {
     @GetMapping("/{id}")
     @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public ResponseEntity<Task> getTaskById(@PathVariable Long id) {
+        log.info("Getting task with id {} ", id);
         Task task = taskService.getTaskById(id);
         return ResponseEntity.ok().body(task);
     }
 
     @PostMapping
-    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER','ADMIN')")
     public ResponseEntity<Task> createTask(@RequestBody @Valid TaskDto taskDto) {
         log.info("Creating task {} ", taskDto);
         final Task task = Task.builder()

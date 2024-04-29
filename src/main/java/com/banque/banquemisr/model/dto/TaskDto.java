@@ -19,13 +19,13 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TaskDto {
-    @NotBlank(message = "title is mandatory")
+    //@NotBlank(message = "title is mandatory")
     private String title;
     private String description;
-    @NotNull(message = "Status is mandatory")
+    //@NotNull(message = "Status is mandatory")
     private TaskStatus status;
-    @NotNull(message = "Priority is mandatory")
+    //@NotNull(message = "Priority is mandatory")
     private TaskPriority priority;
-    @NotNull(message = "Due date is mandatory")
+    //@NotNull(message = "Due date is mandatory")
     private LocalDate dueDate;
 }

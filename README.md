@@ -13,6 +13,11 @@ This project is a task management system that allows users to manage their tasks
 - **Email Notification:** The system supports email notifications regarding task updates
 - **Task and Notification History:** Users can view a list of all task history and Notification History.
 - **User Authentication:** The system supports user authentication to ensure secure access to tasks.
+  Use the credentials below to authenticate and get oauth token.
+{
+    "username":"ardeneric",
+    "password":"123-456-789"
+}
 
 ## Technologies Used
 

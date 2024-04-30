@@ -22,11 +22,12 @@ public class User implements UserDetails {
     @Column(unique = true, length = 100, nullable = false)
     private String username;
     @Column(nullable = false)
-    @JsonIgnore
+    @JsonIgnore()
     private String password;
     @Column
     @Enumerated(EnumType.STRING)
     private UserRole role;
+    private String email;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

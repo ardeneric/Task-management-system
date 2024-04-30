@@ -3,7 +3,9 @@ package com.banque.banquemisr.entity;
 import com.banque.banquemisr.enums.NotificationType;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -26,6 +28,8 @@ public class Notification {
     @Enumerated(EnumType.STRING)
     private NotificationType notificationType;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date sentAt;
+    @CreationTimestamp
+    private LocalDateTime sentAt;
+
+    private String message;
 }

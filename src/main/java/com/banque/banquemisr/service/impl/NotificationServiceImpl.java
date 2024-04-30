@@ -13,7 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -24,6 +23,7 @@ public class NotificationServiceImpl implements NotificationService {
     private final NotificationRepository notificationRepository;
     private final TaskRepository taskRepository;
     private final UserRepository userRepository;
+    private final EmailService emailService;
 
     @Override
     public List<Notification> getAllNotifications() {
@@ -31,7 +31,8 @@ public class NotificationServiceImpl implements NotificationService {
     }
 
     @Override
-    public Notification createNotification(Long taskId, Long userId, NotificationType notificationType) {
+    public Notification createNotification(Long taskId, Long userId, NotificationType notificationType, String message) {
+        log.info("Creating notification :: {} ", notificationType);
         Task task = taskRepository.findById(taskId).orElse(null);
         User user = userRepository.findById(userId).orElse(null);
 
@@ -44,8 +45,9 @@ public class NotificationServiceImpl implements NotificationService {
         notification.setTask(task);
         notification.setUser(user);
         notification.setNotificationType(notificationType);
-        notification.setSentAt(new Date());
+        notification.setMessage(message);
 
+        emailService.sendEmail(user.getEmail(), NotificationType.IMPORTANT_UPDATE.name(), message);
         return notificationRepository.save(notification);
     }
 }

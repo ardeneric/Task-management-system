@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface NotificationService {
     List<Notification> getAllNotifications();
-    Notification createNotification(Long taskId, Long userId, NotificationType notificationType);
+    Notification createNotification(Long taskId, Long userId, NotificationType notificationType, String message);
 
 
 

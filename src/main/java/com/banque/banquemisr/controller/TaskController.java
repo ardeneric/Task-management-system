@@ -5,6 +5,7 @@ import com.banque.banquemisr.entity.Task;
 import com.banque.banquemisr.enums.TaskStatus;
 import com.banque.banquemisr.model.dto.TaskDto;
 import com.banque.banquemisr.service.TaskService;
+import com.banque.banquemisr.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +17,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -27,6 +29,7 @@ import java.util.List;
 @Slf4j
 public class TaskController {
     private final TaskService taskService;
+    private final UserService userService;
 
     @GetMapping
     @PreAuthorize("hasAnyRole('USER','ADMIN')")
@@ -58,6 +61,7 @@ public class TaskController {
                 .priority(taskDto.getPriority())
                 .status(taskDto.getStatus())
                 .dueDate(taskDto.getDueDate())
+                .user(StringUtils.isEmpty(taskDto.getUsername()) ? null : userService.getUserByUsername(taskDto.getUsername()))
                 .build();
         Task createdTask = taskService.createTask(task);
         if (createdTask == null) {
@@ -75,6 +79,7 @@ public class TaskController {
                 .description(taskDto.getDescription())
                 .priority(taskDto.getPriority())
                 .dueDate(taskDto.getDueDate())
+                .user(StringUtils.isEmpty(taskDto.getUsername()) ? null : userService.getUserByUsername(taskDto.getUsername()))
                 .build();
         Task updatedTask = taskService.updateTask(id, task);
         return ResponseEntity.ok().body(updatedTask);

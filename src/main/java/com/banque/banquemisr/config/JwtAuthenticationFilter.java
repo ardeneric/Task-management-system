@@ -67,7 +67,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 }
             }
 
-            logger.info("passing here");
             filterChain.doFilter(request, response);
         } catch (ServletException ex) {
             logger.error("Invalid request body {} ", ex);

@@ -8,6 +8,10 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDate;
 import java.util.Collections;
@@ -28,12 +32,18 @@ public class TaskServiceTest {
     private TaskServiceImpl taskService;
 
     @Test
-    public void testGetAllTasks() {
-        when(taskRepository.findAll()).thenReturn(Collections.singletonList(new Task()));
+    void testGetAllTasks() {
+        List<Task> tasks = Collections.singletonList(new Task());
+        Page<Task> page = new PageImpl<>(tasks);
+        when(taskRepository.findAll(any(Pageable.class))).thenReturn(page);
 
-        taskService.getAllTasks(pageable);
+        Pageable pageable = PageRequest.of(0, 10);
 
-        verify(taskRepository).findAll();
+        List<Task> result = taskService.getAllTasks(pageable).getContent();
+
+        verify(taskRepository).findAll(any(Pageable.class));
+
+        assertEquals(tasks, result);
     }
 
     @Test

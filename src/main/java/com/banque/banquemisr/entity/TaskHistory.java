@@ -2,8 +2,9 @@ package com.banque.banquemisr.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -18,8 +19,8 @@ public class TaskHistory {
     @JoinColumn(name = "task_id")
     private Task task;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date updatedAt;
+    @CreationTimestamp
+    private LocalDateTime createdAt;
 
     @Lob
     private String changes;

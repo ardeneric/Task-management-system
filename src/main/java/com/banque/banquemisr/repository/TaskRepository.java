@@ -12,4 +12,5 @@ import java.util.List;
 public interface TaskRepository extends JpaRepository<Task, Long> {
     List<Task> findByTitleContainingAndDescriptionContainingAndStatusAndDueDate(String title, String description, TaskStatus status, LocalDate dueDate);
 
+    List<Task> findByDueDate(LocalDate date);
 }

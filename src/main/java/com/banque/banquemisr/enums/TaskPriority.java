@@ -1,8 +1,6 @@
 package com.banque.banquemisr.enums;
 
-/**
- * @author ericarden
- **/ // TaskPriority enum
+ // TaskPriority enum
 public enum TaskPriority {
     LOW, MEDIUM, HIGH
 }

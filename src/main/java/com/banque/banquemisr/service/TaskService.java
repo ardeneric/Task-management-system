@@ -22,4 +22,6 @@ public interface TaskService {
     void deleteTask(Long id);
 
     List<Task> searchTasks(String title, String description, TaskStatus status, LocalDate dueDate);
+
+    List<Task> getTasksDueToday(LocalDate date);
 }

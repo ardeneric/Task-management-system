@@ -44,6 +44,7 @@ public class Task {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+    @Column(columnDefinition = "boolean default false")
     private boolean deleted = Boolean.FALSE;
 
     public Task(Long id) {

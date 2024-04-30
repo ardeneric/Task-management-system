@@ -1,11 +1,15 @@
 package com.banque.banquemisr.service.impl;
 
 import com.banque.banquemisr.entity.Task;
+import com.banque.banquemisr.enums.TaskStatus;
 import com.banque.banquemisr.repository.TaskRepository;
 import com.banque.banquemisr.service.TaskService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -15,8 +19,8 @@ public class TaskServiceImpl implements TaskService {
     private final TaskRepository taskRepository;
 
     @Override
-    public List<Task> getAllTasks() {
-        return taskRepository.findAll();
+    public Page<Task> getAllTasks(Pageable pageable) {
+        return taskRepository.findAll(pageable);
     }
 
     @Override
@@ -38,5 +42,10 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public void deleteTask(Long id) {
         taskRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Task> searchTasks(String title, String description, TaskStatus status, LocalDate dueDate) {
+        return taskRepository.findByTitleContainingAndDescriptionContainingAndStatusAndDueDate(title, description, status, dueDate);
     }
 }

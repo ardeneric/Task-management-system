@@ -1,6 +1,3 @@
-Certainly! Here's the README with formatting for GitHub:
-
----
 
 # Task Management System
 

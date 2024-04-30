@@ -1,13 +1,17 @@
 package com.banque.banquemisr.service;
 
 import com.banque.banquemisr.entity.Task;
+import com.banque.banquemisr.entity.User;
 import com.banque.banquemisr.enums.TaskStatus;
+import com.banque.banquemisr.event.NotificationEvent;
+import com.banque.banquemisr.event.TaskEvent;
 import com.banque.banquemisr.repository.TaskRepository;
 import com.banque.banquemisr.service.impl.TaskServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -16,11 +20,11 @@ import org.springframework.data.domain.Pageable;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 public class TaskServiceTest {
@@ -30,6 +34,9 @@ public class TaskServiceTest {
 
     @InjectMocks
     private TaskServiceImpl taskService;
+
+    @Mock
+    private ApplicationEventPublisher eventPublisher;
 
     @Test
     void testGetAllTasks() {
@@ -66,5 +73,30 @@ public class TaskServiceTest {
         assertEquals(task.getDescription(), foundTasks.get(0).getDescription());
         assertEquals(task.getStatus(), foundTasks.get(0).getStatus());
         assertEquals(task.getDueDate(), foundTasks.get(0).getDueDate());
+    }
+
+    @Test
+    void testGetTaskById() {
+        Long id = 1L;
+        Task task = new Task();
+        when(taskRepository.findById(id)).thenReturn(Optional.of(task));
+
+        Task result = taskService.getTaskById(id);
+
+        assertEquals(task, result);
+        verify(taskRepository, times(1)).findById(id);
+    }
+
+    @Test
+    void testCreateTask() {
+        Task task = new Task();
+        task.setUser(new User());
+        when(taskRepository.save(task)).thenReturn(task);
+
+        Task result = taskService.createTask(task);
+
+        assertEquals(task, result);
+        verify(eventPublisher, times(1)).publishEvent(any(TaskEvent.class));
+        verify(eventPublisher, times(1)).publishEvent(any(NotificationEvent.class));
     }
 }

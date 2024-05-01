@@ -36,7 +36,7 @@ This project is a task management system that allows users to manage their tasks
 
 ## Usage
 
-1. Run your Spring Boot application and navigate to http://localhost:8080/swagger-ui/ in your web browser.
+1. Run your Spring Boot application and navigate to [http://localhost:8080/swagger-ui/](http://localhost:8080/swagger-ui/index.html) in your web browser.
    You should see the Swagger UI interface with documentation for your APIs.
 
 ## Contributing

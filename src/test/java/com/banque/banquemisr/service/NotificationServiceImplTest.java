@@ -56,8 +56,9 @@ class NotificationServiceImplTest {
         when(taskRepository.findById(taskId)).thenReturn(java.util.Optional.of(task));
         when(userRepository.findById(userId)).thenReturn(java.util.Optional.of(user));
 
-        Notification notification = notificationService.createNotification(taskId, userId, notificationType, message);
+        notificationService.createNotification(taskId, userId, notificationType, message);
 
         verify(emailService, times(1)).sendEmail(user.getEmail(), notificationType.name(), message);
+        verify(notificationRepository, times(1)).save(any(Notification.class));
     }
 }

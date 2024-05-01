@@ -14,10 +14,12 @@ This project is a task management system that allows users to manage their tasks
 - **Task and Notification History:** Users can view a list of all task history and Notification History.
 - **User Authentication:** The system supports user authentication to ensure secure access to tasks.
   Use the credentials below to authenticate and get oauth token.
-{
+
+- **Path:** localhost:8080/authenticate
+`{
     "username":"ardeneric",
     "password":"123-456-789"
-}
+}`
 
 ## Technologies Used
 

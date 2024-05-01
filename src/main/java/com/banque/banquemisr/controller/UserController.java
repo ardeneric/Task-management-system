@@ -3,6 +3,7 @@ package com.banque.banquemisr.controller;
 import com.banque.banquemisr.entity.User;
 import com.banque.banquemisr.model.dto.CreateUserDto;
 import com.banque.banquemisr.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -39,7 +40,7 @@ public class UserController {
 
     @PostMapping("/add")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<User> addUser(@RequestBody CreateUserDto request) {
+    public ResponseEntity<User> addUser(@RequestBody @Valid CreateUserDto request) {
         log.info("Creating new user :: {} ", request);
         String encryptedPassword = passwordEncoder.encode(request.getPassword());
 

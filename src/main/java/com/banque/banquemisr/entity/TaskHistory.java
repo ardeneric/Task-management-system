@@ -24,4 +24,6 @@ public class TaskHistory {
 
     @Lob
     private String changes;
+
+    private Long deletedTaskId;
 }

@@ -1,6 +1,7 @@
 package com.banque.banquemisr.event.listener;
 
 import com.banque.banquemisr.entity.TaskHistory;
+import com.banque.banquemisr.enums.OperationType;
 import com.banque.banquemisr.event.NotificationEvent;
 import com.banque.banquemisr.event.TaskEvent;
 import com.banque.banquemisr.service.NotificationService;
@@ -26,6 +27,9 @@ public class EventListeners {
         TaskHistory history = new TaskHistory();
         history.setChanges(event.getOperationType().name());
         history.setTask(event.getTask());
+        if(event.getOperationType().equals(OperationType.DELETED)){
+            history.setDeletedTaskId(event.getTask().getId());
+        }
         taskHistoryService.createTaskHistory(history);
     }
 

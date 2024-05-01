@@ -41,6 +41,13 @@ This project is a task management system that allows users to manage their tasks
 1. Run your Spring Boot application and navigate to [http://localhost:8080/swagger-ui/](http://localhost:8080/swagger-ui/index.html) in your web browser.
    You should see the Swagger UI interface with documentation for your APIs.
 
+# Email Notifications
+  To receive email notifications, 
+1. Use the http://localhost:8080/api/users/add path to add a new user with a valid email.
+2. Update any task with your username and you should immediately receive an IMPORTANT NOTICE email. ![Screenshot 2024-05-01 at 1 21 05 AM](https://github.com/ardeneric/Task-management-system/assets/16945563/2312678b-2d08-4b1e-8395-ee5479a684a5)
+
+3. You will also receive UPCOMING_DEADLINE email notification when you are assigned any pending task with an upcoming deadline.
+
 ## Accessing Database
 1. Navigate to [http://localhost:8080/h2-console](http://localhost:8080/h2-console) in your web browser
 2. Enter username `sa`

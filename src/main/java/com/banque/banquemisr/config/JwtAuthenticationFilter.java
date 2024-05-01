@@ -28,6 +28,7 @@ import java.io.IOException;
 @Component
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
+    public static final String CONTENT_TYPE = "application/json";
     private final HandlerExceptionResolver handlerExceptionResolver;
 
     private final JwtUtil jwtUtil;
@@ -71,19 +72,19 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         } catch (ServletException ex) {
             logger.error("Invalid request body {} ", ex);
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            response.setContentType("application/json");
+            response.setContentType(CONTENT_TYPE);
             response.getWriter().write(String.format("{\"error\": \"%s\"}", ex.getMessage()));
             handlerExceptionResolver.resolveException(request, response, null, ex);
         } catch (AccessDeniedException ex) {
             logger.error("Access denied {} ", ex);
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-            response.setContentType("application/json");
+            response.setContentType(CONTENT_TYPE);
             response.getWriter().write("{\"error\": \"Access denied\"}");
             handlerExceptionResolver.resolveException(request, response, null, ex);
         } catch (Exception exception) {
             logger.error("Error occurred {} ", exception);
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            response.setContentType("application/json");
+            response.setContentType(CONTENT_TYPE);
             response.getWriter().write(String.format("{\"error\": \"%s\"}", exception.getMessage()));
             handlerExceptionResolver.resolveException(request, response, null, exception);
         }

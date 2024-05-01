@@ -5,7 +5,7 @@ import com.banque.banquemisr.enums.OperationType;
 import org.springframework.context.ApplicationEvent;
 
 public class TaskEvent extends ApplicationEvent {
-    private final Task task;
+    private final transient Task task;
     private final OperationType operationType;
 
     public TaskEvent(Object source, Task task, OperationType operationType) {

@@ -29,7 +29,7 @@ public class UserDetailsConfiguration {
                 .map(user -> new org.springframework.security.core.userdetails.User(
                         user.getUsername(),
                         user.getPassword(),
-                        getAuthorities(user.getRole()) // Get the user's roles
+                        getAuthorities(user.getRole())
                 ))
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }

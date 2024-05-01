@@ -56,9 +56,6 @@ public class TaskControllerTest {
         Page<Task> page = new PageImpl<>(Collections.singletonList(task), pageable, 1);
         Mockito.when(taskService.getAllTasks(pageable)).thenReturn(page);
 
-        // Logging the content of the page to check if it's populated
-        System.out.println("Page content: " + page.getContent());
-
         mockMvc.perform(MockMvcRequestBuilders.get("/api/tasks")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
@@ -150,7 +147,6 @@ public class TaskControllerTest {
     @Test
     @WithMockUser(roles = "USER")
     void testSearchTasks() throws Exception {
-        // Mock data
         Task task = new Task();
         task.setId(1L);
         task.setTitle("Task 1");
@@ -160,11 +156,9 @@ public class TaskControllerTest {
 
         List<Task> tasks = Collections.singletonList(task);
 
-        // Mock service method
         when(taskService.searchTasks("title", "description", TaskStatus.TODO, LocalDate.now()))
                 .thenReturn(tasks);
 
-        // Perform GET request
         mockMvc.perform(MockMvcRequestBuilders.get("/api/tasks/search")
                         .param("title", "title")
                         .param("description", "description")

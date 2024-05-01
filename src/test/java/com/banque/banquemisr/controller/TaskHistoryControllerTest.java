@@ -33,14 +33,11 @@ public class TaskHistoryControllerTest {
 
     @Test
     void getAllTaskHistory_ReturnsTaskHistoryPage() {
-        // Mock data
         Page<TaskHistory> taskHistoryPage = new PageImpl<>(List.of(new TaskHistory(), new TaskHistory()));
         Mockito.when(taskHistoryService.getAllTaskHistory(Mockito.any(Pageable.class))).thenReturn(taskHistoryPage);
 
-        // Call the controller method
         ResponseEntity<Page<TaskHistory>> response = taskHistoryController.getAllTaskHistory(0, 10, new String[]{"id", "asc"});
 
-        // Verify the response
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(taskHistoryPage, response.getBody());
     }

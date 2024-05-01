@@ -1,9 +1,9 @@
 INSERT INTO `users` (username, role, email, password)
-VALUES ('ardeneric', 'ADMIN', 'ardeneric77@gmail.com', '$2y$08$DRkXSlN0BY5UBYJJxsBwueVPc/dLknxNuT3YQ13s31XP1/hBJTtFq');
-VALUES ('user', 'USER', 'user@gmail.com', '$2y$10$agBOP4M9oJe81lqEGbthz.5aIPevM5SOrOOQ5CrD6cdmeN0iW5pH.');
+VALUES ('ardeneric', 'ADMIN', 'ardeneric77@gmail.com', '$2y$08$DRkXSlN0BY5UBYJJxsBwueVPc/dLknxNuT3YQ13s31XP1/hBJTtFq'),
+       ('user', 'USER', 'user@gmail.com', '$2y$10$agBOP4M9oJe81lqEGbthz.5aIPevM5SOrOOQ5CrD6cdmeN0iW5pH.');
 
 -- Insert data into tasks table
-INSERT INTO Task (title, description, priority, status, due_date)
+INSERT INTO `task` (title, description, priority, status, due_date)
 VALUES ('Task 1', 'Description for Task 1', 'HIGH', 'IN_PROGRESS', '2024-05-01'),
        ('Task 2', 'Description for Task 2', 'LOW', 'TODO', '2024-05-02'),
        ('Task 3', 'Description for Task 3', 'MEDIUM', 'DONE', '2024-05-03'),

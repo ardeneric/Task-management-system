@@ -9,4 +9,5 @@ public interface UserService {
 
     User getUserByUsername(String username);
     List<User> findAll();
+    User createUser(User user);
 }

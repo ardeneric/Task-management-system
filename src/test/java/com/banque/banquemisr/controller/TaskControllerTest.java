@@ -51,7 +51,7 @@ public class TaskControllerTest {
         task.setId(1L);
         task.setTitle("Task 1");
 
-        Pageable pageable = PageRequest.of(0, 10); // Assuming page 0 and size 10
+        Pageable pageable = PageRequest.of(0, 10);
 
         Page<Task> page = new PageImpl<>(Collections.singletonList(task), pageable, 1);
         Mockito.when(taskService.getAllTasks(pageable)).thenReturn(page);
